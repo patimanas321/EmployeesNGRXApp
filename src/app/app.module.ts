@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -22,20 +23,26 @@ import {
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { NoteListComponent } from './notes-list/note-list.component';
+import { AddNoteComponent } from './add-note/add-note.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NoteListComponent
+    HomeComponent,
+    NoteListComponent,
+    AddNoteComponent
   ],
   imports: [
     BrowserModule,
-    //AppRoutingModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
 
     MatButtonModule,
     MatButtonToggleModule,
@@ -54,7 +61,8 @@ import { NoteListComponent } from './notes-list/note-list.component';
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,34 @@
+<div class="back-to-home-panel">
+  <button (click)="cancel()" mat-button>
+    <mat-icon>arrow_back</mat-icon>Back to Home
+  </button>
+</div>
+<mat-card>
+  <div style="border-bottom: 1px solid lightgray; margin-bottom: 10px;">
+    <h2>Add New Note</h2>
+  </div>
+  <div>
+    <form #form="ngForm" (ngSubmit)="createNewNote()" style="display: flex; flex-direction: column;">
+      <mat-form-field style="width: 100%; max-width: 400px;">
+        <input matInput id="title" name="title" required [(ngModel)]="note.title" #title="ngModel" placeholder="Note Title">
+        <mat-error *ngIf="title.invalid && (title.dirty || title.touched)">
+          Please Enter Note Title
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field style="width: 100%;">
+        <input matInput id="body" name="body" required [(ngModel)]="note.body" #body="ngModel" placeholder="Note Body">
+        <mat-error *ngIf="body.invalid && (body.dirty || body.touched)">
+          Please Enter Note Body
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button [disabled]="form.invalid" mat-raised-button style="margin-right: 20px;" color="primary">
+          Save
+        </button>
+        <button type="button" (click)="cancel();" mat-raised-button>
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-card>

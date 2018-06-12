@@ -3,14 +3,11 @@
     <mat-toolbar color="primary">
       <span>My Notes</span>
       <span style="flex: 1 1 auto;"></span>
-      <button mat-icon-button>
-        <mat-icon>note_add</mat-icon>
-      </button>
     </mat-toolbar>
   </header>
   <main class="content-area-wrapper">
     <div class="content-area">
-      <note-list [notes]="notes$ | async"></note-list>
+      <router-outlet></router-outlet>      
     </div>
   </main>
   <footer>

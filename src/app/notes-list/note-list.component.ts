@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { Note } from '../models/note';
 
 @Component({
@@ -9,5 +9,12 @@ import { Note } from '../models/note';
 })
 export class NoteListComponent {
   @Input()
-  notes: Note[] = []
+  notes: Note[] = [];
+
+  @Output()
+  public onNoteDelete: EventEmitter<Note> = new EventEmitter();
+
+  public noteDeleteClicked(note: Note){
+    this.onNoteDelete.emit(note);
+  }
 }
