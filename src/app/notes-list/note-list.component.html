@@ -1,0 +1,16 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let note of notes;">
+    <mat-expansion-panel-header>
+      <mat-panel-title class="note-title-wrapper">
+        <mat-icon>note</mat-icon>
+        <span class="note-title">{{note.title}}</span>
+      </mat-panel-title>
+      <mat-panel-description class="note-created-on">
+        {{note.createdOn | date}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="note-body">
+      {{note.body}}
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
