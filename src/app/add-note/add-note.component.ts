@@ -2,6 +2,9 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Note } from '../models/note';
 import { NotesService } from '../services/notes.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from '../store/app-state';
+import * as notesAction from '../store/actions/notes.action';
 
 @Component({
   selector: 'add-note',
@@ -10,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AddNoteComponent {
   constructor(
-    private notesService: NotesService,
+    private store: Store<AppState>,
     private router: Router
   ){
 
@@ -18,7 +21,7 @@ export class AddNoteComponent {
   public note: Note = new Note(new Date().valueOf(), '', new Date(), '');
   
   public createNewNote(){
-    this.notesService.addNote(this.note);
+    this.store.dispatch(new notesAction.AddNoteAction(this.note));
     this.router.navigate(['/home']);
   }
   

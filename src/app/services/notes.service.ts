@@ -19,19 +19,28 @@ export class NotesService {
         return this.notesList$;
     }
 
-    public addNote(newNote: Note) {
+    public addNote(newNote: Note): Observable<Note> {
         this.noteList.push(newNote);
         this._notesList$.next(this.noteList);
         this.snackBar.open('Note Added Successfully', '', {
             duration: 2000,
         });
+
+        return Observable.create(function (observer) {
+            observer.next(newNote);
+        });
     }
 
-    public deleteNote(id: number){
-        this.noteList = this.noteList.filter( note => note.id != id);
+    public deleteNote(id: number): Observable<Note> {
+        let deletedNote = this.noteList.filter(note => note.id == id)[0];
+
+        this.noteList = this.noteList.filter(note => note.id != id);
         this._notesList$.next(this.noteList);
         this.snackBar.open('Note Deleted Successfully', '', {
             duration: 2000,
+        });
+        return Observable.create(function (observer) {
+            observer.next(deletedNote);
         });
     }
 }
