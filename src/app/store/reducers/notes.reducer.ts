@@ -7,7 +7,7 @@ let INITIAL_STATE: Note[] = [];
 export function notesReducer(state = INITIAL_STATE, action: notesAction.Action) {
     switch (action.type) {
         case notesAction.LOAD_NOTES_SUCCESS: {
-            return action.payload
+            return action.payload;
         }
 
         case notesAction.DELETE_NOTE_SUCCESS: {
